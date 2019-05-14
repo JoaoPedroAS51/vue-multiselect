@@ -671,11 +671,12 @@ export default {
 
       this.isOpen = false
       /* istanbul ignore else  */
-      if (this.searchable) {
+      if (this.searchable && this.$refs.hasOwnProperty('search') && this.$refs.search) {
         this.$refs.search.blur()
-      } else {
+      } else if (this.$el) {
         this.$el.blur()
       }
+
       if (!this.preserveSearch) this.search = ''
       this.$emit('close', this.getValue(), this.id)
     },
